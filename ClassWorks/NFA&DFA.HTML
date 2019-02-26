@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>NFA & DFA for (1|0)*00 </title>
+</head>
+
+<body>
+
+    <h2 id=title></h2>
+
+    <!--p>Non-deterministic finite automaton</p-->
+
+    <pre id=out></pre>
+
+    <hr />
+    <b>Logic</b>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 0 50px;
+        }
+
+        th {
+            color: red;
+            padding: 5px 12px;
+        }
+
+        td {
+            border: 1px solid blue;
+            padding: 5px 12px;
+            text-align: center;
+        }
+    </style>
+    <table>
+
+      <br>
+    NFA
+  <tr><th></th><th>0</th><th>1</th></tr>
+  <tr><th> > a</th><td>ab</td><td>a</td></tr>
+  <tr><th>&emsp;b</th><td>c</td><td>ϕ</td></tr>
+  <tr><th>* c</th><td>ϕ</td><td>ϕ</td></tr>
+  </table>
+  <br>
+  <table>
+    DFA
+  <tr><th></th><th>0</th><th>1</th></tr>
+  <tr><th> >  A</th><td>AB</td><td>A</td></tr>
+  <tr><th>&emsp; AB</th><td>ABC</td><td>A</td></tr>
+  <tr><th>* ABC</th><td>ABC</td><td>A</td></tr>
+  </table>
+  <pre id=sample></pre>
+    <pre id=NFAresult></pre>
+    <pre id=DFAresult></pre>
+
+
+    <hr />
+
+    <script>
+        "use strict";
+        function unionNFA(a, b) { //set operation using strings
+            let s = a
+            for (let x of b) if (!a.includes(x)) s += x
+            return s
+        }
+        function intersectNFA(a, b) {
+            let s = ''
+            for (let x of b) if (a.includes(x)) s += x
+            return s
+        }
+        function deltaNFA(q, c) { // (1|0)*00
+            if (q == 'a' && c == '0') return 'ab'
+            if (q == 'a' && c == '1') return 'a'
+            if (q == 'b' && c == '0') return 'c'
+            return '';  //default -- no transition
+        }
+        function acceptNFA(w, F = 'c', Q = 'a') {
+            //w: input String
+            //F: final state(s)
+            //Q: current state(s)
+            let i = 0, txt = Q
+            while (i < w.length) {
+                let c = w[i], T = ''
+                for (let q of Q)
+                    T = unionNFA(T, deltaNFA(q, c))
+                Q = T
+                if (Q == '') break
+                i++; txt += ", " + c + " -> " + Q + '\n' + Q
+            }
+
+            let a = intersectNFA(Q, F).length > 0;
+            if (a) {
+                return txt + '  ' + (a ? "Accept" : "Reject")
+            }
+            else {
+                return null;
+            }
+        }
+
+        function testNFA() {
+            let a = []
+            for (let n = 1; n < 50; n++) {
+                let w = n.toString(2)  // to binary
+                if (acceptNFA(w)) a.push(n);
+            }
+            NFAresult.innerText = "Numbers accepted by NFA: " + a
+        }
+
+        function deltaDFA(q, c) { // (1|0)*00
+            if (q == 'A' && c == '0') return 'B'
+            if (q == 'B' && c == '0') return 'C'
+            if (q == 'C' && c == '0') return 'C'
+            if (c == '1') return 'A'
+            return '';  //default -- no transition
+        }
+
+        function acceptDFA(w, F = 'C', q = 'A') {
+            //w: input String
+            //F: final state(s)
+            //q: current state
+            let i = 0, txt = q
+            while (i < w.length) {
+                q = deltaDFA(q, w[i])
+                if (q == '') break
+                i++; txt += " -> " + q
+            }
+
+            let a = (q != '' && F.includes(q))
+            if (a) {
+                return txt + '  ' + (a ? "Accept" : "Reject")
+            }
+            else {
+                return null;
+            }
+        }
+
+        function testDFA() {
+            let a = []
+            for (let n = 1; n < 50; n++) {
+                let w = n.toString(2)  // to binary
+                if (acceptDFA(w)) a.push(n);
+            }
+            DFAresult.innerText = "Numbers accepted by DFA: " + a;
+        }
+
+        title.innerText = document.title;
+        sample.innerText = deltaNFA + '\n' + deltaDFA;
+        testNFA();
+        testDFA();
+    </script>
+</body>
+
+</html>
