@@ -24,7 +24,7 @@
 Pattern <input type=text id=pat onKeyUp="checkRE()">&emsp;
 
 <select id=menu onChange="setValues()">
-<option>Letter<option>Number<option>Suffix<option>x+letter<option>Turkish char<option>Capital letters<option>Tarih<option>between two rounded brackets
+<option>Letter<option>Number<option>Suffix<option>x+letter<option>Arabic char<option>Capital letters<option>Tarih<option>between two rounded brackets
 </select>
 
 </p>
@@ -53,7 +53,7 @@ const ptrn = ["[a-z]",
  "[0-9]{4}",
   "d[iuü][km]",
    "x[a-z]",
-   "[ğşçiıöü]",
+   "[ب س م ا ل ه]",
    "[A-Z]",
    "([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}",
    "\\(([^)]+)\\)"];
@@ -62,7 +62,7 @@ const word =
      "Bugün 23/6/2018 saat 14",
      "Geldim gördüm buldum...",
      "Excellent expression tax ",
-     "Geldim gördüm buldum..",
+     "بسم  الله gggh",
      "Hello world from Saudi",
      "bu tarihte  29/03/2011 olay  oldu ",
      "(sgylarımla) (hi) (hello) hiçbir şey "];
