@@ -6,59 +6,59 @@
     <meta name="viewport" content="width=device-width">
     <title>Regular Expressions </title>
     <style>
-	P,Pre,b {
-                border: inset blue 10px
-            }
         #pat {
-            width: 90px;
+            width: 100px;
         }
         #inp {
-            width: 250px;
+            width: 500px;
         }
         .foundArray {
             color: red;
         }
         .foundString {
-            color:#33CAFF   ;
+            color:blue;
         }
+		
+		 span span[class=foundString] {color: red}
+		 span span[class=foundArray] {color: blue}
     </style>
 </head>
 
 <body>
     <h2 id=title></h2>
     <p>
-      Input<br><textarea rows='10' id=inp onKeyUp="checkRE()"></textarea>
+        Input<br><textarea rows='10'  id=inp onKeyUp="checkRE()"></textarea>
     </p>
     <p id=out></p>
 
-    <hr />
-    <b>Sample code</b>
-    <pre id=sample></pre>
-    <hr />
-
-    <script>
+<fieldset style="width:450px">
+	<legend style="color:green;font-size:larger;">Sample Code</legend>
+	<pre id="sample"></pre>
+</fieldset>
+   
+   
+      <script>
         "use strict";
+        
         function setValues() {
-            inp.value = 'let longString = "This is a very long string which needs " \n+"to wrap across multiple lines because " \n+"otherwise my code is unreadable."\n';
-            inp.value += "var vegetables = ['Cabbage', 'Turnip', 'Radish', 'Carrot'];\nvar fruits = [\"Apple\", \"Banana\", \"Orange\"];\nvar years = [1950, 1960, 1970, 1980, 1990, 2000, 2010];"
+            inp.value = 'let longString = "This is a very long string which needs " +"to wrap across multiple lines because " \n+"otherwise my code is unreadable."\n';
+            
+            inp.value += "<br>var vegetables = ['Cabbage', 'Turnip', 'Radish', 'Carrot'];\nvar fruits = [\"Apple\", \"Banana\", \"Orange\"];\nvar years = [1950, 1960, 1970, 1980, 1990, 2000, 2010];"
             checkRE();
         }
-        function checkRE() {
-            if (inp.value) {
-                var exp = /(\"|\').*(\"|\')/g;
-                const str = "<span class=foundString>$&</span>";
-                let ilkStr = inp.value.replace(exp, str);
-                const exp2 = new RegExp('\\[.*\\]', 'g');
-                const str2 = "<span class=foundArray>$&</span>";
-                out.innerHTML = ilkStr.replace(exp2,str2);
-                let arrays = document.getElementsByClassName('foundArray');
-                for (const it of arrays) {
-                    if(it.getElementsByClassName('foundString')[0])
-                        it.getElementsByClassName('foundString')[0].classList.remove('foundString');
-                }
-            }
-        }
-        sample.innerText = setValues.toString() + "\n" + checkRE.toString();
+function checkRE() {
+    if (inp.value) {
+        
+        var expString = /(\"|\').*/g;
+        const str1 = "<span class=foundString>$&</span>";
+        let output = inp.value.replace(expString, str1);
+        const expArray = new RegExp('\\[.*\\]', 'g');
+        const str2 = "<span class=foundArray>$&</span>";
+        out.innerHTML = output.replace(expArray,str2);	    
+	
+    }
+}
+        sample.innerText = checkRE.toString();
         title.innerText = document.title; setValues();
     </script>
 
