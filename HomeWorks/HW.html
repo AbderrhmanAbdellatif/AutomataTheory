@@ -52,10 +52,12 @@
 function checkRE() {
     if (inp.value) {
         
-        var expString = /(\"|\').*/g;
-        const str1 = "<span class=foundString>$&</span>";
+        var expString = /(\"|\').*/g;// ("") yade (') basliyor ve (.) karakterler aliyor *  cok  anlama geliyor
+        const str1 = "<span class=foundString>$&</span>";//
         let output = inp.value.replace(expString, str1);
-        const expArray = new RegExp('\\[.*\\]', 'g');
+		
+        const expArray = new RegExp('\\[.*\\]', 'g'); //  "[" ile basliyor (.) karakterler  * cok anlama geliyor  
+		
         const str2 = "<span class=foundArray>$&</span>";
         out.innerHTML = output.replace(expArray,str2);	    
 	
