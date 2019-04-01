@@ -1,8 +1,8 @@
 {
   "name": "exercise",
-  "short_name": "exercise ",
-  "description": "Class works and homeWorks for BLM305",
-  "start_url": "/exercise/",
+  "short_name": "Auto",
+  "description": "Class works and homeWorks for Automata Theory",
+  "start_url": "/AutomataTheory/",
   "display": "standalone",
   "background_color": "grey",
   "theme_color": "grey",

@@ -1,4 +1,4 @@
-const CACHE ='exercise'
+const CACHE ='AutomataTheory'
 
 function save(req, resp) {
   return caches.open(CACHE)
@@ -10,7 +10,7 @@ function save(req, resp) {
 }
 function fetchCB(e) { //fetch first
   let req = e.request
-  console.log('A0M0RAJAB', req.url);
+  console.log('Automata Theory ', req.url);
   e.respondWith(
     fetch(req).then(r2 => save(req, r2))
     .catch(() => { return caches.match(req).then(r1 => r1) })
