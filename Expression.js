@@ -29,13 +29,18 @@ class Binary {
    constructor(left, oper, right) {
       this.left = left; this.oper = oper; this.right = right;
    }
+   
    fValue() {
-     debugger;
+             //     debugger;
+
       switch (this.oper) {
+		 
       case PLUS:  return this.left.fValue()+this.right.fValue();
       case MINUS: return this.left.fValue()-this.right.fValue();
       case STAR:  return this.left.fValue()*this.right.fValue();
       case POWER: return Math.pow(this.left.fValue(),this.right.fValue());
+	  case MOD :return this.left.fValue()%this.right.fValue();
+	  case IDENT:return this.toString(); 
       case SLASH:
          let v = this.right.fValue();
          if (v == 0)
@@ -62,13 +67,13 @@ function binary(e) {
 function expression() {
     let e = (tok.kind == MINUS)?
       binary(new Constant(0)) : term();
-    while (tok.kind == PLUS || tok.kind == MINUS)
+    while (tok.kind == PLUS || tok.kind == MINUS )
       e = binary(e);
     return e;
 }
 function term() {
     let e = factor();
-    while (tok.kind == STAR || tok.kind == SLASH) {
+    while (tok.kind == STAR || tok.kind == SLASH || tok.kind == MOD ) {
         let op = tok.kind; match(op);
         e = new Binary(e, op, factor());
     }
@@ -94,6 +99,14 @@ function factor() {
       else {
         return e;
       }
+	  if(tok.kind==IDENT){ 
+	     match(IDENT);
+         match(LEFT);
+         let z = expression();
+         match(RIGHT); 
+	  }else{
+		  return e;
+	  }
 
 	return e;
     default: expected("Factor");

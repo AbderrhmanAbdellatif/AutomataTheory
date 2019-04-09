@@ -15,6 +15,7 @@ const
     
 class Token {
   constructor(s, i) {
+	  
     //s = x[0], i = x.index
     this.index = i
     this.kind = Token.getKind(s)
@@ -24,7 +25,8 @@ class Token {
         this.index++; break
       case NUMBER:
         this.val = Number(s); break
-      case IDENT: 
+	  case IDENT: 
+	    
       case UNKNOWN: 
         this.val = s; break
       default:  //do nothing -- no value
