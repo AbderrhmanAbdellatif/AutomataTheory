@@ -111,15 +111,16 @@ var printer = ''  //current unfinished line
 const metST = new Map() //Symbol Table: name -> Method
 function method()  {
     let name = tok.val;
-    if (metST.get(name)) 
+    if (metST.get(name))  // kullandim  mathod daha once kullanmadim
        error(name+" already defined");
-    met = new Method(name);
+    met = new Method(name);// method tableye ekliyorum
     metST.set(name, met);
-    match(IDENT); match(LEFT);
+    match(IDENT);// mathod adi test ya de sin cos gibi 
+	match(LEFT); // "("
     if (tok.kind == IDENT) identList();
     met.nParams = met.vars.length; 
-    match(RIGHT);
-    match(BEGIN);
+    match(RIGHT);// ")"
+    match(BEGIN); // "{"
     let d = declaration();
     if (d.vars.length > 0) met.add(d); 
     let a = statList();
@@ -127,10 +128,12 @@ function method()  {
     return met;
 }
 function identifier()  {
-    let id = tok.val; match(IDENT);
-    if (met.vars.includes(id)) 
-       error(id+" declared twice");
-    met.vars.push(id); return id;
+    let id = tok.val; // okudugu identfier tutmasi lazim
+	match(IDENT);
+    if (met.vars.includes(id)) // mathode degiskenleri var mi yok mu 
+       error(id+" declared twice"); // var ise bir mathode donduruyor
+    met.vars.push(id); // mesaj vermedigi ise o zaman degiskenleri ekleyecegiz 
+	return id;
 }
 function identList() {
     let L = [];
@@ -142,10 +145,12 @@ function identList() {
 }
 function declaration()  {
     let a = [];
-    if (tok == VAR) {
-       match(VAR); a = identList(); match(SEMICOL);
+    if (tok == VAR) { // var olmasi lazim degisken olmadan onece 
+       match(VAR); 
+	   a = identList(); //  sum gibi degiskenleri 
+	   match(SEMICOL);
     }
-    return new Declaration(a);
+    return new Declaration(a); // var
 }
 function statList() {
     let L = [];
@@ -192,8 +197,8 @@ function factor() { //redefined
     return null;
 }
 function variable() {
-    let i = met.vars.indexOf(tok.val);
-    if (i < 0) error(tok.val+" not declared");
+    let i = met.vars.indexOf(tok.val); // simple tabulsunde  bu gelen var aruyor 
+    if (i < 0) error(tok.val+" not declared"); // yok ise hata veriyor 
     match(IDENT);
     return new Variable(met, i);
 }
