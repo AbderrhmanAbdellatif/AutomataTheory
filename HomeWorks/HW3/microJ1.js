@@ -104,6 +104,11 @@ class PrintItem {
       return (this.len? this.exp+":"+this.len : ""+this.exp);
    }
 }
+class WithValue {
+   constructor(v, e) { this.left = v; this.right = e; }
+   run() { VM.setValue(this.left, this.right); }
+   toString() { return this.left+" = "+this.right; }
+}
 
 //microJ1 Parser
 var met  //current Method being parsed
@@ -117,8 +122,10 @@ function method()  {
     metST.set(name, met);
     match(IDENT);// mathod adi test ya de sin cos gibi 
 	match(LEFT); // "("
-    if (tok.kind == IDENT) identList();
+    if (tok.kind == IDENT) 
+	identList();
     met.nParams = met.vars.length; 
+	
     match(RIGHT);// ")"
     match(BEGIN); // "{"
     let d = declaration();
@@ -132,14 +139,29 @@ function identifier()  {
 	match(IDENT);
     if (met.vars.includes(id)) // mathode degiskenleri var mi yok mu 
        error(id+" declared twice"); // var ise bir mathode donduruyor
+	 //  if(withvalue()==1){ console.log("gfds");}
     met.vars.push(id); // mesaj vermedigi ise o zaman degiskenleri ekleyecegiz 
 	return id;
 }
+
+function withValue() {
+    let i = identifier();
+	if(tok.kind!=ASSIGN) 
+	{
+		return i;
+	}
+    match(ASSIGN); // esit oldugu zaman 
+    let f = factor();
+    return new WithValue(i,f);
+}
+
 function identList() {
-    let L = [];
-    L.push(identifier());
+    let L = []; 
+    L.push(withValue());
+	
     while (tok == COMMA)  {
-       match(COMMA); L.push(identifier());
+       match(COMMA);
+	   L.push(withValue()); // numara var ise ekliyorum
     }
     return L;
 }

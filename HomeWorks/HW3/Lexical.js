@@ -11,7 +11,7 @@ const
     VAR = "var",   IF = "if",     ELSE = "else", FOR = "for", 
     WHILE = "while", RETURN = "return",   READ = "read", 
     PRINT = "print", PRINTLN = "println", TO = "to", 
-    UNKNOWN = '???', EOF = 'eof';
+    UNKNOWN = '???', EOF = 'eof' ;
     
 class Token {
   constructor(s, i) {
