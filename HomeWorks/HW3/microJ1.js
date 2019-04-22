@@ -145,16 +145,15 @@ function identifier()  {
 }
 
 function withValue() {
-    let i = identifier();
-	if(tok.kind!=ASSIGN) 
-	{
-		return i;
-	}
-    match(ASSIGN); // esit oldugu zaman 
-    let f = factor();
-    return new WithValue(i,f);
+   let L = [];
+   L.push(identifier());
+   if (tok == ASSIGN) {
+      match(ASSIGN);
+      let e = expression(); // gelen number icin 
+      return new WithValue(L, e); // burda binray agaca veriyorum ki  ( WithValue left: ["v"] ;right: Constant ; num: 8)
+   }
+   return L;
 }
-
 function identList() {
     let L = []; 
     L.push(withValue());
