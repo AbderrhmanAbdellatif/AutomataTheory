@@ -145,14 +145,17 @@ function identifier()  {
 }
 
 function withValue() {
-    let i = identifier();
-	if(tok.kind!=ASSIGN) 
+    let i= identifier();
+	 let value =null;
+	if(tok.kind==ASSIGN) 
 	{
+		 match(ASSIGN); // esit oldugu zaman 
+    let value = factor();  // agac yolu 
+  
+	}else{
 		return i;
 	}
-    match(ASSIGN); // esit oldugu zaman 
-    let f = factor();
-    return new WithValue(i,f);
+     return new WithValue(i,value); // o sinifa gidiyor 
 }
 
 function identList() {
