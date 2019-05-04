@@ -1,318 +1,323 @@
-<html style="background-image: url(&quot;https://cdn-images-1.medium.com/max/1200/1*bcZz-qb_DNpvrNNwQBhQmQ.jpeg&quot;);" class="gr__abderrhmanabdellatif_github_io"><head>
+﻿<html style="background-image: url(&quot;https://cdn-images-1.medium.com/max/1200/1*bcZz-qb_DNpvrNNwQBhQmQ.jpeg&quot;);" class="gr__abderrhmanabdellatif_github_io">
+<head>
+    <title>Automata Theory </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="JSuniWork/CW7/geek.png">
+    <link rel="manifest" href="manifest.json">
+    <script>
+        // https://stackoverflow.com/questions/38168276/navigator-serviceworker-controller-is-null-until-page-refresh
+        self.addEventListener('install', function (event) {
+            event.waitUntil(self.skipWaiting());
+            // Activate worker immediately
+        });
+        self.addEventListener('activate', function (event) {
+            event.waitUntil(self.clients.claim());
+            // Become available to all pages
+        });
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/AutomataTheory/sw.js').then((reg) => {
+                console.log('SW starts', reg.active)
+            }
+            ).catch(console.log)
+        }
 
 
-  <title>Automata Theory </title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="icon" href="JSuniWork/CW7/geek.png">
-  <link rel="manifest" href="manifest.json">
-
-  <script>
-    // https://stackoverflow.com/questions/38168276/navigator-serviceworker-controller-is-null-until-page-refresh
-    self.addEventListener('install', function (event) {
-      event.waitUntil(self.skipWaiting()); // Activate worker immediately
-    });
-    self.addEventListener('activate', function (event) {
-      event.waitUntil(self.clients.claim()); // Become available to all pages
-    });
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/AutomataTheory/sw.js')
-        .then((reg) => { console.log('SW starts', reg.active) })
-        .catch(console.log)
-    }
-  </script>
-  
-  <style>
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      
-    }
-  </style>
+/**/</script>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+        }
+    </style>
 </head>
-
-
 <body class="w3-light-grey w3-content" style="max-width:1600px;background-image: url(&quot;https://cdn-images-1.medium.com/max/1200/1*bcZz-qb_DNpvrNNwQBhQmQ.jpeg&quot;);" data-gr-c-s-loaded="true">
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    <!-- !PAGE CONTENT! -->
+    <!-- <div class="w3-main" style="margin-left:300px"> -->
+    <div class="w3-main">
+        <!-- Header -->
+        <header id="portfolio">
+            <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"></span>
+            <div class="w3-container">
+                <h1>
+                    <b style="">Automata Theory </b>
+                </h1>
+            </div>
+        </header>
+        <!-- First Grid-->
+        <div class="w3-row-padding">
+            <div class="w3-quarter w3-container"></div>
+            <div class="w3-quarter w3-container">
+                <div class="w3-container w3-white">
+                    <p>
+                        <b>CW1 - Deterministic Finite Automata</b>
+                    </p>
+                    <p>
+                        Deterministic Finite Automata<a href="https://maeyler.github.io/Auto/work/DFA1.html">Deterministic Finite Automata</a>
+                        methods.
 
-  <!-- Sidebar/menu -->
-  <!-- <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-    <div class="w3-container">
-      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-        <i class="fa fa-remove"></i>
-      </a>
-      <img src="https://avatars3.githubusercontent.com/u/18273833" style="width:100%;" class="w3-round"><br><br>
-      <h4><b>Abdurrahman RAJAB </b></h4>
-    </div>
-
-    <div class="w3-panel w3-large">
-      <a class="fa fa-github w3-hover-opacity" href="https://github.com/a0m0rajab"></a>
-      <a class="fa fa-facebook-official w3-hover-opacity" href="https://www.facebook.com/a0m0rajab"></a>
-      <a class="fa fa-instagram w3-hover-opacity" href="https://www.instagram.com/a0m0rajab"></a>
-      <a class="fa fa-twitter w3-hover-opacity" href="https://www.twitter.com/rajab_2"></a>
-      <a class="fa fa-linkedin w3-hover-opacity" href="https://www.linkedin.com/in/a0m0rajab"></a>
-    </div>
-  </nav> -->
-
-  <!-- Overlay effect when opening sidebar on small screens -->
-  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-  <!-- !PAGE CONTENT! -->
-  <!-- <div class="w3-main" style="margin-left:300px"> -->
-      <div class="w3-main">
-
-    <!-- Header -->
-    <header id="portfolio">
-      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"></span>
-      <div class="w3-container">
-        <h1><b style="
-">Automata Theory </b></h1>
-
-      </div>
-    </header>
-
-    <!-- First Grid-->
-    <div class="w3-row-padding">
-      <div class="w3-quarter w3-container">
-        
-      </div>
-      <div class="w3-quarter w3-container">
-        <div class="w3-container w3-white">
-          <p><b>CW1 - Deterministic Finite Automata</b></p>
-          <p>Deterministic Finite Automata<a href="https://maeyler.github.io/Auto/work/DFA1.html">Deterministic Finite Automata</a>
-            methods.</p>
-          <div>
-            <a href="https://groups.google.com/d/msg/fsmvu-mae/RBtQIkMHgdg/EMBPuv91HAAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
-            <a href="ClassWorks/CW1.png" class="w3-btn w3-white w3-border w3-border-grey w3-round">Work</a>
-            <br>
-            <br>
-          </div>
+                    </p>
+                    <div>
+                        <a href="https://groups.google.com/d/msg/fsmvu-mae/RBtQIkMHgdg/EMBPuv91HAAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
+                        <a href="ClassWorks/CW1.png" class="w3-btn w3-white w3-border w3-border-grey w3-round">Work</a>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-quarter w3-container">
+                <div class="w3-container w3-white">
+                    <p>
+                        <b>CW2 - Regular Expression and NFA</b>
+                    </p>
+                    <p>
+                        <a href="https://maeyler.github.io/Auto/work/NFA1.html">NFA and RegExp</a>
+                    </p>
+                    <div>
+                        <a href="https://groups.google.com/d/msg/fsmvu-mae/4WqSDFvWp6E/lvTqBM8wBgAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
+                        <a href="ClassWorks/NFA&amp;DFA.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">work</a>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-quarter w3-container">
+                <div class="w3-container w3-white">
+                    <p>
+                        <b>CW3 - Regular Expression</b>
+                    </p>
+                    <p>
+                        <a href="https://maeyler.github.io/Auto/work/RegExp.html">RegExp </a>
+                        .
+                    </p>
+                    <div>
+                        <a href=" https://groups.google.com/d/msg/fsmvu-mae/S253nUHVaZw/37M8k8dHCAAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
+                        <a href="ClassWorks/RegExp.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">Work</a>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-quarter w3-container">
+                <div class="w3-container w3-white">
+                    <p>
+                        <b>CW7 -  microJ Level 3 </b>
+                    </p>
+                    <p>
+                        <a href="https://maeyler.github.io/Auto/microJ/microJ3.html">microJ Level 3</a>
+                    </p>
+                    <div>
+                        <a href="https://groups.google.com/d/msg/fsmvu-mae/2SkmT0IeZJ8/bT_GVWo8CgAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
+                        <a href="ClassWorks/microJ/microJ3.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">work</a>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="w3-quarter w3-container">
-        <div class="w3-container w3-white">
-          <p><b>CW2 - Regular Expression and NFA</b></p>
-          <p>
-            <a href="https://maeyler.github.io/Auto/work/NFA1.html">NFA and RegExp</a></p>
-          <div>
-            <a href="https://groups.google.com/d/msg/fsmvu-mae/4WqSDFvWp6E/lvTqBM8wBgAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
-            <a href="ClassWorks/NFA&amp;DFA.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">work</a>
-            <br>
-            <br>
-          </div>
-        </div>
-      </div>
-      <div class="w3-quarter w3-container">
-        <div class="w3-container w3-white">
-          <p><b>CW3 - Regular Expression</b></p>
-          <p><a href="https://maeyler.github.io/Auto/work/RegExp.html"> RegExp </a>.</p>
-          <div>
-            <a href=" https://groups.google.com/d/msg/fsmvu-mae/S253nUHVaZw/37M8k8dHCAAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
-   
-            <a href="ClassWorks/RegExp.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">Work</a>
-            <br>
-            <br>
-          </div>
-        </div>
-      </div>
-     <div class="w3-quarter w3-container">
-        <div class="w3-container w3-white">
-          <p><b>CW7 -  microJ Level 3 </b></p>
-          <p>
-            <a href="https://maeyler.github.io/Auto/microJ/microJ3.html"> microJ Level 3</a></p>
-          <div>
-            <a href="https://groups.google.com/d/msg/fsmvu-mae/2SkmT0IeZJ8/bT_GVWo8CgAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
-            <a href="ClassWorks/microJ/microJ3.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">work</a>
-            <br>
-            <br>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-    <br>
-
-    <!-- Second Grid-->
-    <div class="w3-row-padding">
-      <div class="w3-quarter w3-container">
-        <div class="w3-container w3-white">
-          <p><b>CW4 - Context-free grammars </b></p>
-          <div>
-            <a href="https://groups.google.com/d/msg/fsmvu-mae/qLsF8sU2ymc/fJQbPeGGBwAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
-
-            <a href="ClassWorks/CW4.png" class="w3-btn w3-white w3-border w3-border-grey w3-round">Work</a>
-          </div>
-          <br>
-
-        </div>
-      </div>
-      </div>
-    <br>
-    <!-- third Grid-->
-    <div class="w3-row-padding">
-      <div class="w3-third w3-container">
-        <div class="w3-container w3-white">
-          <p><b>HW1 - Regular Expression</b></p>
-          <p>Make a web page in your repo that colors the strings blue and the arrays red</p>
-          <div>
-            <a href="https://groups.google.com/d/msg/fsmvu-mae/-6a0tLLgvcs/ugVQh3nCCAAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
-       
-            <a href="HomeWorks\HW.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">Work</a>
-            <br>
-            <br>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <br>
-
-    <!-- forth Grid-->
-    <div class="w3-row-padding">
-      <div class="w3-third w3-container">
-        <div class="w3-container w3-white">
-          <p><b>HW2 - Grammars </b></p>
-          <div>
-            <a href="https://maeyler.github.io/Auto/work/#assignment-2" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
-       
-            <a href="https://abderrhmanabdellatif.github.io/AutomataTheory/HomeWorks/HW2/Expression.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">work</a>
-            <br>
-            <br>
-          </div>
-        </div>
-      </div>
-      
-
-    </div>
- <!-- forth Grid-->
-    <div class="w3-row-padding">
-      <div class="w3-third w3-container">
-        <div class="w3-container w3-white">
-          <p><b>HW3 - Modify microJ1 parser with two rules </b></p>
-          <div>
-            <a href="https://maeyler.github.io/Auto/work/#assignment-3" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
-       
-            <a href="https://abderrhmanabdellatif.github.io/AutomataTheory/HomeWorks/HW3/microJ1.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">work</a>
-            <br>
-            <br>
-          </div>
-        </div>
-      </div>
-      
-
-    </div>
-        
         <br>
-    <div class="w3-row-padding">
-      <div class="w3-third w3-container">
-        <div class="w3-container w3-white">
-          <p><b>Project - CFG to Parse tree Conversion</b></p>
-          
-          <div>
-            <a href="https://maeyler.github.io/Auto/work/#term-project" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
-    
-            <a href="Porject/demo.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">work</a>
-            <br>
-            <br>
-          </div>
+        <!-- Second Grid-->
+        <div class="w3-row-padding">
+            <div class="w3-quarter w3-container">
+                <div class="w3-container w3-white">
+                    <p>
+                        <b>CW4 - Context-free grammars </b>
+                    </p>
+                    <div>
+                        <a href="https://groups.google.com/d/msg/fsmvu-mae/qLsF8sU2ymc/fJQbPeGGBwAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
+                        <a href="ClassWorks/CW4.png" class="w3-btn w3-white w3-border w3-border-grey w3-round">Work</a>
+                    </div>
+                    <br>
+                </div>
+            </div>
         </div>
-      </div>
-     
+        <br>
+        <!-- third Grid-->
+        <div class="w3-row-padding">
+            <div class="w3-third w3-container">
+                <div class="w3-container w3-white">
+                    <p>
+                        <b>HW1 - Regular Expression</b>
+                    </p>
+                    <p>Make a web page in your repo that colors the strings blue and the arrays red</p>
+                    <div>
+                        <a href="https://groups.google.com/d/msg/fsmvu-mae/-6a0tLLgvcs/ugVQh3nCCAAJ" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
+                        <a href="HomeWorks\HW.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">Work</a>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- forth Grid-->
+        <div class="w3-row-padding">
+            <div class="w3-third w3-container">
+                <div class="w3-container w3-white">
+                    <p>
+                        <b>HW2 - Grammars </b>
+                    </p>
+                    <div>
+                        <a href="https://maeyler.github.io/Auto/work/#assignment-2" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
+                        <a href="https://abderrhmanabdellatif.github.io/AutomataTheory/HomeWorks/HW2/Expression.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">work</a>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- forth Grid-->
+        <div class="w3-row-padding">
+            <div class="w3-third w3-container">
+                <div class="w3-container w3-white">
+                    <p>
+                        <b>HW3 - Modify microJ1 parser with two rules </b>
+                    </p>
+                    <div>
+                        <a href="https://maeyler.github.io/Auto/work/#assignment-3" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
+                        <a href="https://abderrhmanabdellatif.github.io/AutomataTheory/HomeWorks/HW3/microJ1.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">work</a>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="w3-row-padding">
+            <div class="w3-third w3-container">
+                <div class="w3-container w3-white">
+                    <p>
+                        <b>Project - CFG to Parse tree Conversion</b>
+                    </p>
+                    <div>
+                        <a href="https://maeyler.github.io/Auto/work/#term-project" class="w3-btn w3-white w3-border w3-border-grey w3-round">Question</a>
+                        <a href="Porject/index.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">work</a>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- UseFull links Grid-->
+        <div class="w3-row-padding">
+            <div class="w3-container">
+                <div class="w3-container w3-white">
+                    <p>
+                        <b>Usefull links</b>
+                    </p>
+                    <a href="https://web.dev/" class="w3-btn w3-white w3-border w3-border-blue w3-round">
+                        Google web Development
+                        Site
+                    </a>
+                    <a href="https://codepen.io/" class="w3-btn w3-white w3-border w3-border-grey w3-round">Code pen Platform</a>
+                    <a href="https://www.fsf.org/" class="w3-btn w3-white w3-border w3-border-blue w3-round">
+                        Free software
+                        foundation.
+                    </a>
+                    <a href="https://www.gnu.org/philosophy/shouldbefree.en.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">
+                        free
+                        software philosophy.
+                    </a>
+                    <br>
+                    <br>
+                    <a href="https://keep.google.com" class="w3-btn w3-white w3-border w3-border-blue w3-round">
+                        Google keeps for
+                        notes.
+                    </a>
+                    <a href="https://trello.com/" class="w3-btn w3-white w3-border w3-border-grey w3-round">
+                        Trello for planning
+                        and teamWork.
+                    </a>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-32 w3-dark-grey">
+            <div class="w3-row-padding">
+                <div class="w3-third">
+                    <h3>ِAbout lesson</h3>
+                    <img src="JSuniWork\imgs\uniLogo.png" style="width:50%; height: 50%;" class="w3-round">
+                    <br>
+                    <br>
+                    <h4>
+                        <b>Fatih Sultan Mehmet University </b>
+                    </h4>
+                    <p>BLM305 advanged programming course.</p>
+                    <p>
+                        <a href="fsm.edu.tr" target="_blank">University link </a>
+                    </p>
+                </div>
+                <div class="w3-third">
+                    <h3>ِAbout Me</h3>
+                    <img src="https://avatars1.githubusercontent.com/u/36771724?s=460&amp;v=4" style="width:50%; height: 50%;" class="w3-round">
+                    <br>
+                    <br>
+                    <h4>
+                        <b>Abdurrahman Abdellatif</b>
+                    </h4>
+                    <p>Computer Science Student 4rd Grade.</p>
+                    <p>
+                        <a href="https://abderrhmanabdellatif.github.io/AutomataTheory/" target="_blank">project page on Github</a>
+                    </p>
+                </div>
+                <div class="w3-third">
+                    <h3>ِAbout Instructor</h3>
+                    <!-- -->
+                    <img src="JSuniWork\imgs\eyler.jpg" style="width:50%; height: 50%;" class="w3-round">
+                    <br>
+                    <br>
+                    <h4>
+                        <b>Mehmet Akif eyler </b>
+                    </h4>
+                    <p>
+                        Mehmet Akif Eyler get his <a href="http://www.genealogy.ams.org/id.php?id=81183">PHD</a>
+                        from Harvard
+                        University at 1980.
 
-
+                    </p>
+                    <p>
+                        <a href="https://github.com/maeyler " target="_blank">Github Page</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <div class="w3-black w3-center w3-padding-24">
+            Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a>
+        </div>
+        <!-- End page content -->
     </div>
-    <br>
+    <script>
+                // Script to open and close sidebar
+                // function w3_open() {
+                //   document.getElementById("mySidebar").style.display = "block";
+                //   document.getElementById("myOverlay").style.display = "block";
+                // }
 
-    <!-- UseFull links Grid-->
-    <div class="w3-row-padding">
-      <div class="w3-container">
-        <div class="w3-container w3-white">
-          <p><b>Usefull links</b></p>
-          <a href="https://web.dev/" class="w3-btn w3-white w3-border w3-border-blue w3-round">Google web Development
-            Site</a>
-          <a href="https://codepen.io/" class="w3-btn w3-white w3-border w3-border-grey w3-round">Code pen Platform</a>
-          <a href="https://www.fsf.org/" class="w3-btn w3-white w3-border w3-border-blue w3-round">Free software
-            foundation. </a>
-          <a href="https://www.gnu.org/philosophy/shouldbefree.en.html" class="w3-btn w3-white w3-border w3-border-grey w3-round">free
-            software philosophy.</a>
-
-          <br><br>
-          <a href="https://keep.google.com" class="w3-btn w3-white w3-border w3-border-blue w3-round">Google keeps for
-            notes.</a>
-          <a href="https://trello.com/" class="w3-btn w3-white w3-border w3-border-grey w3-round">Trello for planning
-            and teamWork.</a>
-
-          <br>
-          <br>
+                // function w3_close() {
+                //   document.getElementById("mySidebar").style.display = "none";
+                //   document.getElementById("myOverlay").style.display = "none";
+                // }
+    </script>
+    <div>
+        <div class="gr_-editor gr-iframe-first-load" style="display: none;">
+            <div class="gr_-editor_back"></div>
+            <iframe class="gr_-ifr gr-_dialog-content" __idm_frm__="156"></iframe>
         </div>
-      </div>
-
-
     </div>
-    <br>
-
-
-
-
-
-    <!-- Footer -->
-    <footer class="w3-container w3-padding-32 w3-dark-grey">
-      <div class="w3-row-padding">
-        <div class="w3-third">
-          <h3>ِAbout lesson</h3>
-          <img src="JSuniWork\imgs\uniLogo.png" style="width:50%; height: 50%;" class="w3-round"><br><br>
-          <h4><b>Fatih Sultan Mehmet University </b></h4>
-          <p>BLM305 advanged programming course.</p>
-          <p><a href="fsm.edu.tr" target="_blank">University link </a></p>
-        </div>
-
-        <div class="w3-third">
-          <h3>ِAbout Me</h3>
-          <img src="https://avatars1.githubusercontent.com/u/36771724?s=460&amp;v=4" style="width:50%; height: 50%;" class="w3-round"><br><br>
-          <h4><b>Abdurrahman Abdellatif</b></h4>
-          <p>Computer Science Student 4rd Grade.</p>
-          <p> <a href="https://abderrhmanabdellatif.github.io/AutomataTheory/" target="_blank">project page on Github</a></p>
-          
-        </div>
-        <div class="w3-third">
-          <h3>ِAbout Instructor</h3>
-          <!-- -->
-          <img src="JSuniWork\imgs\eyler.jpg" style="width:50%; height: 50%;" class="w3-round"><br><br>
-          <h4><b>Mehmet Akif eyler </b></h4>
-          <p>Mehmet Akif Eyler get his <a href="http://www.genealogy.ams.org/id.php?id=81183">PHD</a> from Harvard
-            University at 1980.</p>
-          <p> <a href="https://github.com/maeyler " target="_blank">Github Page</a></p>
-        </div>
-
-      </div>
-    </footer>
-
-    <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
-
-    <!-- End page content -->
-  </div>
-
-  <script>
-    // Script to open and close sidebar
-    // function w3_open() {
-    //   document.getElementById("mySidebar").style.display = "block";
-    //   document.getElementById("myOverlay").style.display = "block";
-    // }
-
-    // function w3_close() {
-    //   document.getElementById("mySidebar").style.display = "none";
-    //   document.getElementById("myOverlay").style.display = "none";
-    // }
-  </script>
-
-
-
-
-</body><div><div class="gr_-editor gr-iframe-first-load" style="display: none;"><div class="gr_-editor_back"></div><iframe class="gr_-ifr gr-_dialog-content" __idm_frm__="826"></iframe></div></div><grammarly-card><div></div></grammarly-card><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>
+    <grammarly-card>
+        <div></div>
+    </grammarly-card>
+    <span class="gr__tooltip">
+        <span class="gr__tooltip-content"></span>
+        <i class="gr__tooltip-logo"></i>
+        <span class="gr__triangle"></span>
+    </span>
+</body>
+</html>
