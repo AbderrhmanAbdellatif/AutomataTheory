@@ -1,142 +1,823 @@
-/*
- Transforming nested lists to pretty tree
- 
- <div class="tree">
-    <ul>
-        <li>
-            <ul>
-            ...
-            </ul>
-        </li>
-        ...
-    </ul>
- </div>
- 
-Source: http://thecodeplayer.com/walkthrough/css3-family-tree
-
-Some other advices about displaying trees: http://stackoverflow.com/questions/1695115/how-do-i-draw-the-lines-of-a-family-tree-using-html-css
-*/
-
-* {
+/*defaults*/
+header, nav, footer {
+    display: block;
     margin: 0;
+    width: 100%;
+}
+
+html , body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    line-height: 1;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    /*split u counted margin */
+    margin: auto;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+p {
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.row::after {
+    display: table;
+    clear: both;
+    content: "";
+    margin 0; }
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+/*navbar*/
+nav {
+    width: 100%;
+    margin: 0;
+}
+
+nav ul {
+    background-color: #0a43b1;
+    overflow: hidden;
+    /*background-color nor shown without setting overflow*/
+    padding: 0;
+    margin: 0;
+}
+
+ul.topnav li {
+    list-style: none;
+    float: left;
+}
+
+ul.topnav li :hover {
+    background-color: aliceblue;
+    color: black;
+}
+
+ul.topnav li.topnav-right {
+    float: right;
+}
+
+ul.topnav li a {
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+    min-height: 16px;
+    padding: 14px;
+    text-align: center;
+    color: aliceblue;
+}
+
+ul.topnav li.dropdownicon {
+    display: none;
+}
+
+/*********custom*********/
+#gradient {
+    background-image: linear-gradient( #bdc0d5,#221094);
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.2em;
+    margin: 30px 0 20px;
+    color: #039ebc;
+}
+
+h2 span {
+    background: #fff;
+    padding: 0 10px;
+}
+
+h1.large {
+    color: #fff;
+    font-size: 70px;
+    margin-bottom: 20px;
+    height: 90px;
+    margin-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+
+h1.med {
+    font-size: 30px;
+    margin-left: 170px;
+    margin-top: 0;
+}
+
+form h2 {
+    color: #fff;
+}
+
+div.leftsidecol {
+    width: 50%;
+    margin-left: 20%;
+}
+
+div.rightsidecol {
+    margin-left: 0%;
+}
+
+/*section 2*/
+.section2Header {
+    text-align: center;
+}
+
+div.box {
+    background-color: #fff;
+    box-shadow: 0 0 4px 4px rgba(0,0,0,.15);
+    padding: 8px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+    height: auto;
+}
+
+.text {
+    margin-left: 20px;
+}
+
+diV.col-4 {
+    padding: 5px;
+}
+}
+
+div.photoContainer {
+    max-width: 50%;
+    height: 500px
+}
+
+.col-10 {
+    margin-left: 10%;
+}
+
+pre code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+    margin-left: 40px;
+}
+
+/*method table*/
+#mehodsTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1%;
+}
+
+#mehodsTable td, #mehodsTable th {
+    border: 1px solid #cb0000;
+    padding: 8px;
+}
+
+#mehodsTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#mehodsTable tr:hover {
+    background-color: #ddd;
+}
+
+#mehodsTable th ,.explanation {
+    padding: 12px;
+    text-align: left;
+    background-color: #00bee2;
+    color: white;
+}
+
+/*-----*/
+/*Regeex game*/
+input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 2px solid #C2BBBB;
+    box-sizing: border-box;
+}
+
+p.HiglitedText {
+    border: 2px solid #C2BBBB;
+    border-left: 5px solid #27D704;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+.found {
+    color: #27D704;
+}
+
+.found2 {
+    color: #27D704;
+}
+
+.found3 {
+    color: #27D704;
+}
+
+.next {
+    margin-left: 80%;
+}
+
+.button {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 20px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #4CAF50;
+}
+
+.button:hover {
+    background-color: #0B7813;
+    /* Green */
+}
+
+/*-----*/
+/*fÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±nd  words*/
+.add {
+    background-color: #1B1D62;
+    border: 2px solid #1B1D62;
+}
+
+.add:hover {
+    background-color: #0E1043;
+    /* Green */
+}
+
+#words {
+    width: 89%;
+    float: left;
+    margin-right: 0;
+    height: 24px;
+}
+
+#wordsNo {
+    width: 2%;
+    float: right;
+    margin-left: 0;
+    border: 2px solid #C2BBBB;
+}
+
+/*footer-*/
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #033741;
+    color: white;
+    padding: 2%;
+    word-wrap: break-word;
+    margin-right: 10px;
+}
+
+.ref {
+    color: aliceblue;
+}
+
+/*-----*/
+/*mobile*/
+@media screen and (max-width: 600px) {
+    ul.topnav li:not(:nth-child(1)) {
+        display: none;
+    }
+
+    ul.topnav li.dropdownicon {
+        display: block;
+        float: right;
+    }
+
+    ul.topnav.responsive li.dropdownicon {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    ul.topnav.responsive {
+        position: relative;
+        /*silebiliriz*/
+    }
+
+    ul.topnav.responsive li {
+        display: inline;
+        float: none;
+    }
+
+    topnav.responsive li a {
+        /*silebiliriz*/
+        display: block;
+        text-align: left;
+        display: block;
+    }
+
+    div.leftsidecol, div.rightsidecol {
+        margin-left: 1%;
+    }
+
+    .col-6, .col-4 {
+        margin-left: 0;
+        width: 100%;
+        margin-bottom: 10%;
+        padding: 8px;
+    }
+
+    div.photoContainer {
+        margin 5px;; overflow: hidden;
+    }
+
+    div.box {
+        height: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .row {
+        margin-left: 0;
+    }
+
+    pre code {
+        margin-left: 0;
+    }
+
+    h1.large {
+        text-align: left;
+        font-size: 40px;
+        margin-left: 10px;
+        margin-bottom: auto;
+    }
+
+    h1.med {
+        text-align: left;
+        font-size: 20px;
+        margin-left: 70px;
+    }
+
+    #words {
+        height: auto;
+        width: 65%;
+        min-height: 25px;
+        margin-right: 5px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 5px 25px 10px 25px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.25;
+    background: #fff;
+}
+
+.personalize legend {
+    font-weight: bold;
+    color: crimson;
+    font-size: 110%;
+}
+
+h2 {
+    margin: 15px 0;
+    text-align: center;
+}
+
+h3 {
+    color: red;
+}
+
+h4 {
+    color: magenta;
+    margin: 15px 0;
+}
+
+.notes li {
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
+.notes li p {
+    margin: 5px 0;
+}
+
+.notes li pre {
+    margin: 8px auto;
+}
+
+.notes2 li {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+.notes2 li p {
+    margin: 5px 0;
+}
+
+.notes ol li {
+    list-style: lower-alpha;
+}
+
+/* responsive behavior: added 12/23/15 */
+.responsive {
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+pre {
+    overflow: auto;
+    overflow-y: hidden;
+    margin-top: 12px;
+    margin-bottom: 9px;
+    padding: 0 5px 0 12px;
+}
+
+pre.smallmargin {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+pre.m {
+    padding: 5px 5px 5px 12px;
+    border: dotted 1px gray;
+    background-color: #f4f4f4;
+}
+
+.bad {
+    background-color: #fed ! important;
+}
+
+.lh3 {
+    line-height: 3ex;
+}
+
+div.n {
+    /*
+  padding: 10px 0 10px 15px;
+*/
+    margin: 10px 0 10px 15px;
+}
+
+div.m {
+    margin: 10px 0 10px 0;
+    padding: 10px 0 10px 15px;
+    border: dotted 1px gray;
+    background-color: #f2f2f2;
+}
+
+a {
+    text-decoration: none;
+    color: #0033cc;
+    outline: none;
+}
+
+a.fixed {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #ff0066;
+}
+
+.ssf {
+    font-family: sans-serif;
+}
+
+a.code-select {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+div.code-formatted-container {
+    margin: 15px 0;
+}
+
+div.code-formatted {
+    position: relative;
+}
+
+div.code-formatted > pre {
+    margin: 0;
+}
+
+.ff-refresh {
+    position: absolute;
+    bottom: 0;
+    right: 3px;
+}
+
+span.separation {
+    display: inline-block;
+    padding: 0 30px;
+}
+
+div.mono {
+    font-family: monospace;
+}
+
+.nobr {
+    white-space: nowrap;
+}
+
+form.show-hide {
+    position: relative;
+    margin: 5px 0;
+}
+
+form.show-hide > button.refresh {
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+form.show-hide > div {
+    display: none;
+    position: relative;
+}
+
+form.show-hide > div > pre {
+    margin: 3px 0 7px 0;
+}
+
+form.show-hide > button.hide {
+    display: none;
+    color: #00c;
+}
+
+form.show-hide > button.show {
+    color: #c00;
+}
+
+form.show-hide > button {
+    position: relative;
+    top: -1px;
+    background: none;
+    font-weight: bold;
+    border: none;
+    text-decoration: underline;
+}
+
+div.show-hide-listing {
+    margin-left: 15px;
+}
+
+div.show-hide-listing .directory {
+    margin-left: -10px;
+}
+
+div.show-hide-listing > hr {
+    margin: 10px 0 10px 0;
+    max-width: 300px;
+}
+
+.file {
+    color: brown;
+}
+
+.wide100 {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+}
+
+form.file-download {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+form.file-download button::-moz-focus-inner {
+    padding: 0;
+    border: none;
+}
+
+form.file-download button {
+    border: none;
+    box-shadow: none;
+    background: none;
+    color: #00c;
+    padding: 0;
+    font-size: 105%;
+}
+
+form.file-download button:hover {
+    color: #c00;
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .code-scroll {
+        overflow-x: scroll;
+        margin-bottom: 15px;
+    }
+}
+
+@media print {
+    body {
+        font-size: 10pt;
+        padding: 0;
+    }
+
+    a.code-select, form.show-hide > button, form.show-hide > button.toggle {
+        display: none;
+        font-size: 10pt;
+    }
+
+    .print-hide {
+        display: none;
+    }
+
+    .print_cell {
+        display: inline-block;
+        vertical-align: top;
+        padding-right: 40px;
+    }
+}
+
+#nob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 11px;
+}
+
+.header-select {
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+.block {
+    vertical-align: top;
+    display: inline-block;
+    padding: 5px;
+}
+
+.border {
+    border: solid 1px black;
+}
+
+.pad0 {
     padding: 0;
 }
 
-.displayTree{
-    margin: 10px
+.pb0 {
+    padding-bottom: 0;
 }
 
-.tree ul {
-	padding-top: 20px;
-    position: relative;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
+div.mt5 {
+    margin-top: 5px;
 }
 
-.tree li {
-    white-space: nowrap;
-	float: left;
+div.mb5 {
+    margin-bottom: 5px;
+}
+
+div.mt2 {
+    margin-top: 2px;
+}
+
+div.mb2 {
+    margin-bottom: 2px;
+}
+
+div.mt0 {
+    margin-top: 0;
+}
+
+div.mb0 {
+    margin-bottom: 0;
+}
+
+pre.mt0 {
+    margin-top: 0;
+}
+
+.header h2 {
+    line-height: 1;
+}
+
+.reference {
+    padding: 0 0 10px 10px;
+    float: right;
+    font-size: 90%;
+}
+
+.reference fieldset {
+    border: solid 1px black;
+    background: #f6f6f6;
+    padding: 5px 10px 10px 10px;
+    min-height: 100px;
+}
+
+.reference legend {
+    padding: 0 8px;
+    color: #c60;
+    font-weight: bold;
+}
+
+blockquote {
+    margin: 12px 15px;
+}
+
+.code-to-show, .hide-code {
+    display: none;
+}
+
+.uml {
+    display: inline-block;
+    border: solid 1px black;
+    vertical-align: top;
+}
+
+.uml .name {
     text-align: center;
-	list-style-type: none;
-	position: relative;
-	padding: 20px 5px 0 5px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+@media print {
+    .reference {
+        display: none;
+    }
+}
+
+.kutu {
+    background-color: white;
+    color: white;
+    padding: 40px;
+}
+
+
+
 	
-	transition: all 0.5s;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-}
-
-/*We will use ::before and ::after to draw the connectors*/
-
-.tree li::before, .tree li::after{
-	content: '';
-	position: absolute;
-    top: 0;
-    right: 50%;
-	border-top: 1px solid #ccc;
-	width: 50%;
-    height: 20px;
-}
-.tree li::after{
-	right: auto;
-    left: 50%;
-	border-left: 1px solid #ccc;
-}
-
-/*We need to remove left-right connectors from elements without
- any siblings*/
-.tree li:only-child::after, .tree li:only-child::before {
-	display: none;
-}
-
-/*Remove space from the top of single children*/
-.tree li:only-child{
-    padding-top: 0;
-}
-
-/*Remove left connector from first child and
- right connector from last child*/
-.tree li:first-child::before, .tree li:last-child::after{
-	border: 0 none;
-}
-/*Adding back the vertical connector to the last nodes*/
-.tree li:last-child::before{
-	border-right: 1px solid #ccc;
-	border-radius: 0 5px 0 0;
-	-webkit-border-radius: 0 5px 0 0;
-	-moz-border-radius: 0 5px 0 0;
-}
-.tree li:first-child::after{
-	border-radius: 5px 0 0 0;
-	-webkit-border-radius: 5px 0 0 0;
-	-moz-border-radius: 5px 0 0 0;
-}
-
-/*Time to add downward connectors from parents*/
-.tree ul ul::before{
-	content: '';
-	position: absolute;
-    top: 0;
-    left: 50%;
-	border-left: 1px solid #ccc;
-	width: 0;
-    height: 20px;
-}
-
-.tree li a{
-	border: 1px solid #ccc;
-	padding: 5px 10px;
-	text-decoration: none;
-	color: #666;
-	font-family: arial, verdana, tahoma;
-	font-size: 11px;
-	display: inline-block;
-	
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-}
-
-/*Time for some hover effects*/
-/*We will apply the hover effect the the lineage of the element also*/
-.tree li a:hover, .tree li a:hover+ul li a {
-	background: #c8e4f8;
-    color: #000;
-    border: 1px solid #94a0b4;
-}
-/*Connector styles on hover*/
-.tree li a:hover+ul li::after,
-.tree li a:hover+ul li::before,
-.tree li a:hover+ul::before,
-.tree li a:hover+ul ul::before{
-	border-color:  #94a0b4;
-}
-
-/*Thats all. I hope you enjoyed it.
- Thanks :)*/

@@ -1,0 +1,406 @@
+<html><head>
+            <title>CFG to  Pres Tree              </title>
+            <link rel="stylesheet" href="style.css">
+			
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+        </head>
+        <body data-aos-easing="slide" data-aos-duration="800" data-aos-delay="0">
+            <nav>
+                <ul class="topnav responsive" id="dropdownmenu">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about">About Parse tree</a>
+                    </li>
+                    <li>
+                        <a href="#rules">Parse Tree Content</a>
+                    </li>
+                    <li>
+                        <a href="#FindPattern">Visualozation</a>
+                    </li>
+                    <li>
+
+                    </li>
+                    <li class="topnav-right">
+                        <a href="#Referances">References</a>
+                    </li>
+                    <!-- 
+                            Unicode Character 'TRIGRAM FOR HEAVEN' -->
+                    <li class="dropdownicon">
+                        <a href="javascript:void(0);" onclick="dropdownMenu()">☰</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="container" id="gradient">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <h1 class="large">CFG To Parse Tree</h1>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <header>
+                <!--https://www.cssmatic.com/box-shadow-->
+                <div class="container" style="
+        background-color: aqua;
+    ">
+                    <!-- second line-->
+                    <div class="row" id="about" style="
+        background-color: aqua;
+    ">
+                        <div class="col-10">
+                            <div class="box" style="
+        color: blue;
+    ">
+                                <h2>
+                                    <span>What is parse trees</span>
+                                </h2>
+                                <p class="text">
+                                    <br>
+                                    A parse tree is an entity which represents the structure of the derivation of
+        a terminal string from some non-terminal (not necessarily the start symbol).
+        The definition is as in the book. Key features to define are the <i>root</i>
+                                    <tt>∈ V</tt>
+                                    and <i>yield</i>
+                                    <tt>
+                                        ∈ Σ<sup>*</sup>
+                                    </tt>
+                                    of each tree.
+
+                                </p>
+                                <ul class="notes">
+                                    <li>
+                                        For each <tt>σ ∈ Σ</tt>
+                                        , there is a tree
+        with root <tt>σ</tt>
+                                        and no children; its yield is <tt>σ</tt>
+                                    </li>
+                                    <li>
+                                        For each rule <tt>A → ε</tt>
+                                        , there is a tree with
+        root <tt>A</tt>
+                                        and one child <tt>ε</tt>
+                                        ; its yield is <tt>ε</tt>
+                                    </li>
+                                    <li>
+                                        If 
+                                        <tt>
+                                            t<sub>1</sub>
+                                        </tt>
+                                        , 
+                                        <tt>
+                                            t<sub>2</sub>
+                                        </tt>
+                                        , ..., 
+                                        <tt>
+                                            t<sub>n</sub>
+                                        </tt>
+                                        are parse trees with roots 
+
+                                        <tt>
+                                            r<sub>1</sub>
+                                        </tt>
+                                        , 
+                                        <tt>
+                                            r<sub>2</sub>
+                                        </tt>
+                                        , ..., 
+                                        <tt>
+                                            r<sub>n</sub>
+                                        </tt>
+                                        and respective yields 
+
+                                        <tt>
+                                            y<sub>1</sub>
+                                        </tt>
+                                        , 
+                                        <tt>
+                                            y<sub>2</sub>
+                                        </tt>
+                                        , ..., 
+                                        <tt>
+                                            y<sub>n</sub>
+                                        </tt>
+                                        ,
+        and 
+                                        <tt>
+                                            A → r<sub>1</sub>
+                                            r<sub>2</sub>
+                                            ...r<sub>n</sub>
+                                        </tt>
+                                        is a production,
+        then there is a parse tree with root <tt>A</tt>
+                                        whose children are  
+
+                                        <tt>
+                                            t<sub>1</sub>
+                                        </tt>
+                                        , 
+                                        <tt>
+                                            t<sub>2</sub>
+                                        </tt>
+                                        , ..., 
+                                        <tt>
+                                            t<sub>n</sub>
+                                        </tt>
+                                        .
+        Its root is <tt>A</tt>
+                                        and its yield is
+        the concatenation of yields: 
+                                        <tt>
+                                            y<sub>1</sub>
+                                            y<sub>2</sub>
+                                            ...y<sub>n</sub>
+                                        </tt>
+                                    </li>
+                                </ul>
+                                Observe that parse trees are constructed from <b>bottom up</b>
+                                , not top down.
+        The actual construction of "adding children" should be made more precise, 
+        but we intuitively know what's going on.
+        <p></p>
+                                <br>
+                                As an example, here are all the parse (sub) trees used to build the parse tree
+    for the arithmetic expression<p></p>
+                                <tt></tt>
+                                <pre>4 + 2 * 3
+E → E + T | E - T | T 
+T → T * F | F  
+F → <b>a</b>| ( E )
+
+                                </pre>
+ represents an operand of some type, be it a number or variable. 
+    The trees are  grouped by height.
+
+
+                                <div class="kutu">
+                                    <button onclick="ornek1geri()" style="
+        background: aquamarine;
+    ">Back</button>
+                                    <img id="ornek1" src="ornek1adım4.jpg" style="width: 100;">
+                                    <button onclick="ornek1ileri()" style="
+        background-color: aqua;
+    ">Next</button>
+                                </div>
+                                <pre></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- methods line-->
+                    <div class="row" style="
+        background-color: aqua;
+    ">
+                        <div class="col-10">
+                            <div class="box">
+                                <h2>
+                                    <span>Parse Tree Content</span>
+                                </h2>
+                                <table id="mehodsTable">
+                                    <tbody>
+                                        <tr>
+                                            <th>Content</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td style="
+        color: crimson;
+    ">Leaves</td>
+                                            <td style="
+        color: blue;
+    ">Labeled By Terminal or ε </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="
+        color: crimson;
+    ">Interior Nodes</td>
+                                            <td style="
+        color: blue;
+    ">Labeled By a Variable </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="
+        color: crimson;
+    ">Children</td>
+                                            <td style="
+        color: blue;
+    ">Labeled BY the right side of a Production for the Parent</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="
+        color: crimson;
+    ">Root</td>
+                                            <td style="
+        color: blue;
+    ">Labeled by the Start symbol</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Rules-->
+                    <div class="row" id="rules">
+                        <div class="col-10">
+
+                        </div>
+                    </div>
+                    <!-- -->
+                    <!-- Test  your patter-->
+                    <div class="row" style="
+        background-color: aqua;
+    ">
+                        <div class="col-10">
+                            
+                        </div>
+                    </div>
+                    <!-- Find pattern-->
+                    <div class="row" id="FindPattern" style="
+        background-color: aqua;
+    ">
+                      <div class="col-10">
+                        <div class="box">
+                            <h2><span>
+                                Parse Tree Visualization
+                            </span></h2>
+                             <a href="demo.html">Parse Tree Test</a>
+
+                          <p></p></div>
+                      </div>
+                  </div>
+                    <!-- find words line-->
+                    <div class="col-10">
+                        
+                      </div>
+                </div>
+                <!-- footer-->
+                <footer id="Referances">
+                    <p>
+                        Referances: <br><a href="https://www.cs.wcupa.edu/rkline/fcs/parse-trees.html#parse-trees" class="ref">Parse Trees</a>
+                        <br><a href="http://lagodiuk.github.io/nlp/deutsch.html" class="ref">Pares tree JS</a>
+
+
+                        <br>
+                        <a href="http://thecodeplayer.com/walkthrough/css3-family-tree" class="ref">Tree Library</a>
+                    </p>
+                </footer>
+                <script>
+                    function dropdownMenu() {
+                        var dropdownmenu1 = document.getElementById("dropdownmenu");
+                        if (dropdownmenu1.className === "topnav") {
+                            dropdownmenu1.className += " responsive";
+                        } else {
+                            dropdownmenu1.className = "topnav";
+                        }
+                    }
+                    const ptrn = ["\\w", "[a-z]", "[0-9]{4}", "d[iuü][km]", "x[a-z]", "[A-Z][a-z]*", "[1-9]*,[1-9]*", "[abc]", "[1|2]", "number", '"\\w+"', "\\w+\\s", "\\w+@\\w+.com"];
+                    const word = ["find words match this pattern @", "Bir iki üç dört beş altı ", "Bugün 23/6/2018 saat 14", "Geldim gördüm buldum...", "Excellent expression tax ", "Find words starts with Capital Letter ", "2,4  Find Double numbers  33  22,33 ", "letters a , b, c, ab, abc, cba rbc", "numbers one, two  1, 22, 21, 2", "number or numbers or num or n", '"maya", "test  ,"" ', "match all words without the last one", "mails :  ahmet@gmail.com normal text a@hotmail.com  "];
+                    let rand;
+                    let selecteddRand = []
+                    let selecteddWords = []
+
+                    function setValues() {
+                        document.getElementById("pat").value = "";
+                        document.getElementById("pat").style.borderColor = "#C2BBBB";
+                        do {
+                            rand = Math.floor(Math.random() * ptrn.length);
+                        } while (selecteddRand.includes(rand));selecteddRand.push(rand)
+                        let exp = new RegExp(ptrn[rand],'g');
+                        let str = "<span class=found>$&</span>";
+                        higlitedText.innerHTML = word[rand].replace(exp, str);
+                        testText.innerText = word[rand];
+                        document.getElementById("testText").style.borderLeft = "thick solid #C2BBBB";
+
+                    }
+
+                    //check if pattern match higlited words
+                    let found2 = document.getElementsByClassName('found2');
+                    let found = document.getElementsByClassName('found');
+
+                    function chechTexts() {
+
+                        if (found.length == found2.length && found.length != 0) {
+                            for (let i = 0; i < found.length; i++) {
+                                console.log(found[i].innerHTML + " " + found2[i].innerHTML)
+                                if (found[i].innerHTML != found2[i].innerHTML) {
+                                    return false;
+                                }
+                            }
+                            return true;
+                        }
+                        return false;
+                    }
+                    function checkRE() {
+
+                        let exp = new RegExp(pat.value,'g');
+                        let str = "<span class=found2>$&</span>";
+                        testText.innerHTML = testText.innerText.replace(exp, str);
+                        if (chechTexts()) {
+                            document.getElementById("testText").style.borderLeft = "thick solid #27D704";
+                            document.getElementById("pat").style.borderColor = "#27D704";
+                        } else {
+                            document.getElementById("testText").style.borderLeft = "thick solid #C2BBBB";
+                            document.getElementById("pat").style.borderColor = "#C2BBBB";
+                        }
+
+                    }
+                    //second section
+                    let rand2;
+                    let ResultWordsLength
+
+                    function add() {
+                        let wordTemp = window.getSelection().toString()
+                        if (resultWords.length - selecteddWords.length > 0 && word[rand2].includes(wordTemp)) {
+                            //
+                            //resultWords.splice( //resultWords.indexOf(wordTemp), 1 );
+                            //
+                            selecteddWords.push(wordTemp)
+                            words.innerHTML = selecteddWords.join(" - ");
+
+                            wordsNo.innerHTML = ResultWordsLength - selecteddWords.length;
+                            if (chechResults()) {
+                                document.getElementById("words").style.borderColor = "#27D704";
+                            } else {
+                                document.getElementById("words").style.borderColor = "#C2BBBB";
+                            }
+                        }
+
+                    }
+                   
+                    //test patter fuctios
+                    
+                   
+                 
+                    var i = 0;
+                    function ornek1ileri() {
+                        var cars = ["ornek12adım1.jpg", "ornek1adım2.jpg", "ornek1adım3.jpg", "ornek1adım4.jpg", "ornek1adım5.jpg"];
+                        if (i <= 3) {
+                            var currentPicture = "";
+                            currentPicture = cars[i + 1];
+                            if (i == 4) {
+                                document.getElementById('ornek1').style = "width: 500"
+                            }
+                            document.getElementById('ornek1').src = cars[i + 1]
+                            i++;
+                        }
+                    }
+
+                    function ornek1geri() {
+                        var cars = ["ornek12adım1.jpg", "ornek1adım2.jpg", "ornek1adım3.jpg", "ornek1adım4.jpg", "ornek1adım5.jpg"];
+                        if (i <= 3 && i != 0 || i == 4) {
+                            var currentPicture = "";
+                            currentPicture = cars[i - 1];
+                            document.getElementById('ornek1').src = cars[i - 1]
+                            i--;
+                        }
+                    }
+                </script>
+            </header>
+
+
+    </body></html>
